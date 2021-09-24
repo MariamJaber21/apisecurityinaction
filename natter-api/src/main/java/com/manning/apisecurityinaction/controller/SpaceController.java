@@ -167,6 +167,7 @@ public class SpaceController {
           "/spaces/" + spaceId + "/messages/" + msgId);
       msg.put("author", author);
       msg.put("time", time.toString());
+
       msg.put("message", message);
 
       return msg.toString();
