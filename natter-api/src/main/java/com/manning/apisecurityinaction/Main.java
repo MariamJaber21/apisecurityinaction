@@ -14,6 +14,7 @@ import static spark.Spark.*;
 public class Main {
 
     public static void main(String... args) throws Exception {
+
         var datasource = JdbcConnectionPool.create(
             "jdbc:h2:mem:natter", "natter", "password");
         var database = Database.forDataSource(datasource);
@@ -24,6 +25,7 @@ public class Main {
         database = Database.forDataSource(datasource);
         var spaceController = new SpaceController(database);
 
+
         before(((request, response) -> {
             if (request.requestMethod().equals("POST") &&
             !"application/json".equals(request.contentType())) {
@@ -32,6 +34,7 @@ public class Main {
                 ).toString());
             }
         }));
+
 
         afterAfter((request, response) -> {
             response.type("application/json;charset=utf-8");
@@ -54,6 +57,7 @@ public class Main {
 
         var moderatorController =
             new ModeratorController(database);
+
         delete("/spaces/:spaceId/messages/:msgId",
             moderatorController::deletePost);
 
@@ -67,6 +71,7 @@ public class Main {
         exception(EmptyResultException.class,
             (e, request, response) -> response.status(404));
     }
+
 
   private static void badRequest(Exception ex,
       Request request, Response response) {
