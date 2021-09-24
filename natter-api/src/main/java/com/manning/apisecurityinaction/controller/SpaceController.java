@@ -164,6 +164,7 @@ public class SpaceController {
       JSONObject msg = new JSONObject();
 
       msg.put("uri",
+
           "/spaces/" + spaceId + "/messages/" + msgId);
       msg.put("author", author);
       msg.put("time", time.toString());
