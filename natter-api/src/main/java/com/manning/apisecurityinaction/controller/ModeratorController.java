@@ -12,7 +12,8 @@ public class ModeratorController {
   public ModeratorController(Database database) {
     this.database = database;
   }
-
+         
+  
   public JSONObject deletePost(Request request, Response response) {
     var spaceId = Long.parseLong(request.params(":spaceId"));
     var msgId = Long.parseLong(request.params(":msgId"));
