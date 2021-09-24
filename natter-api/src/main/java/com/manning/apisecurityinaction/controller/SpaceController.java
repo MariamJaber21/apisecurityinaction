@@ -23,6 +23,7 @@ public class SpaceController {
     if (spaceName.length() > 255) {
       throw new IllegalArgumentException("space name too long");
     }
+    //No check for input type for both user & message
     var owner = json.getString("owner");
     if (!owner.matches("[a-zA-Z][a-zA-Z0-9]{1,29}")) {
       throw new IllegalArgumentException("invalid username");
